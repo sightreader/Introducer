@@ -33,7 +33,7 @@ namespace Introducer
         static IWebSocketServer CreateWebsocketServer(IConfig config)
         {
             var currentDir = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-            var keyPath = Path.IsPathRooted(currentDir) ? config.CertificatePath : Path.Join(currentDir, config.CertificatePath);
+            var keyPath = Path.IsPathRooted(config.CertificatePath) ? config.CertificatePath : Path.Join(currentDir, config.CertificatePath);
 
             FleckLog.Level = LogLevel.Info;
             var server = new WebSocketServer($"wss://0.0.0.0:{config.Port}", false);
